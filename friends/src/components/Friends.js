@@ -27,7 +27,7 @@ export default class Friends extends React.Component{
     render(){
         
         return(
-            <div>
+            <div className="container">
                 {this.state.datas.map(item => (
                 <FriendsList key={item.id} name={item.name} 
                 age={item.age} email={item.email}
