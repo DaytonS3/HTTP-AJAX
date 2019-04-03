@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css'
 import axios from 'axios';
 import FriendsList from './friendsList';
+import Form from './Form';
 
 export default class Friends extends React.Component{
     constructor(){
@@ -21,19 +22,22 @@ export default class Friends extends React.Component{
                 console.log(err);
             })
     }
-
+ 
 
     
     render(){
         
         return(
-            <div className="container">
-                {this.state.datas.map(item => (
-                <FriendsList key={item.id} name={item.name} 
-                age={item.age} email={item.email}
-                />
-                
-                ))}
+            <div>
+                <Form />
+                <div className="container">
+                    {this.state.datas.map(item => (
+                    <FriendsList key={item.id} name={item.name} 
+                    age={item.age} email={item.email}
+                    />
+                    
+                    ))}
+                </div>
             </div>
         )
     }
