@@ -26,17 +26,9 @@ export default class Form extends React.Component{
         })
     }
 
-    postMessage = (e) => {
+    putMessage = (e) => {
         e.preventDefault();
-      this.props.postM(this.state.addFriend);
-
-      this.setState({
-          addFriend: {
-            name: '',
-            age: '',
-            email: ''
-          }
-      })
+      this.props.putM(1, this.state.addFriend)
     }
  
 
@@ -45,7 +37,7 @@ export default class Form extends React.Component{
         
       return(        
         <div className="form">
-            <form onSubmit={this.postMessage}>
+            <form>
                 <input text="text" name="name"
                 value={this.state.name}
                 placeholder="Name" 
@@ -61,7 +53,7 @@ export default class Form extends React.Component{
                 placeholder="Email" 
                 onChange={this.onchange}
                 />
-                <button className="Btn" type="submit">Add Friend</button>
+                <button className="Btn" onClick={this.putMessage}>Update</button>
                 <Link to="/"><button className="Btn">Home</button></Link>
             </form>
             
@@ -74,5 +66,4 @@ export default class Form extends React.Component{
 }
 
 
-    
-   
+  
