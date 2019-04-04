@@ -1,16 +1,77 @@
 import React from 'react';
 import '../App.css'
 
-export default function Form(){
+
+
+
+
+export default class Form extends React.Component{
+    constructor(){
+        super();
+        this.state={
+           addFriend: {
+              name: '',
+              age: '',
+              email: ''
+           } 
+        }
+    }
+
+    onchange = (e) => {
+        this.setState({
+            addFriend: {
+                ...this.state.addFriend,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+
+    postMessage = (e) => {
+        e.preventDefault();
+      this.props.postM(this.state.addFriend);
+
+      this.setState({
+          addFriend: {
+            name: '',
+            age: '',
+            email: ''
+          }
+      })
+    }
+ 
+
     
-    return(        
+    render(){
+        
+      return(        
         <div className="form">
-            <form>
-                <input text="text"
-                placeholder="Add new Friend" />
+            <form onSubmit={this.postMessage}>
+                <input text="text" name="name"
+                value={this.state.name}
+                placeholder="Name" 
+                onChange={this.onchange}
+                />
+                <input text="text" name="age"
+                value={this.state.age}
+                placeholder="Age" 
+                onChange={this.onchange}
+                />
+                <input text="text" name="email"
+                value={this.state.email}
+                placeholder="Email" 
+                onChange={this.onchange}
+                />
+                <button type="submit">Add Friend</button>
             </form>
-            <button>Submit</button>
+            
         </div>
      
-    )
+        )
+        
+    }
+
 }
+
+
+    
+   

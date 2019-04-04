@@ -22,14 +22,23 @@ export default class Friends extends React.Component{
                 console.log(err);
             })
     }
- 
+    
+    postMessage = fri => {
+        axios.post('http://localhost:5000/friends', fri)
+        .then(res=> {
+          console.log(res)
+        })
+        .catch(err=> {
+          console.log(err)
+        })
+      }
 
     
     render(){
         
         return(
             <div>
-                <Form />
+                <Form postM={this.postMessage}/>
                 <div className="container">
                     {this.state.datas.map(item => (
                     <FriendsList key={item.id} name={item.name} 
